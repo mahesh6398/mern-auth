@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState,useRef } from "react";
 function Signup() {
   const [error, setError] = useState(false);
   const [loading,setLoading] = useState(false);
-  
+  const navigate = useNavigate();
   const UsernameElement = useRef();
   const EmailElement = useRef();
   const PasswordElement = useRef();
@@ -20,7 +20,7 @@ function Signup() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/auth/singup", {
+      const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function Signup() {
         setError(true)
         return;
       }
-      console.log(data);
+      navigate('/signin')
     } catch (error) {
       setLoading(false)
       console.error("Error during signup:", error);
