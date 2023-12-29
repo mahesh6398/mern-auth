@@ -41,7 +41,6 @@ function Signup() {
       navigate('/signin')
     } catch (error) {
       setLoading(false)
-      console.error("Error during signup:", error);
     }
   };
 
