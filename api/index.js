@@ -4,9 +4,12 @@ import express from "express";
 import mongoose from 'mongoose';
 import UserRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
+
 
 const app = new express();
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{
