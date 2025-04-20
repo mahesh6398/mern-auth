@@ -7,7 +7,7 @@ function Home() {
       <div className="background-image" />
 
       <div className="overlay-content">
-        <h1 className="glitch" data-text="NEO-EARTH INITIATIVE">NEO-EARTH</h1>
+        <h1 className="glitch" data-text="NEO-EARTH"></h1>
         <p className="storyline">
           The world we knew is gone.<br />
           Burnt skies. Flooded cities. Silence where nature once sang.<br />
