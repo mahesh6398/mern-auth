@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux'
 function Header() {
   const {currentUser} = useSelector(state => state.user) 
+
+   useEffect(() => {
+    if (currentUser?.email) {
+      window.userEmail = currentUser.email;
+    }
+  }, [currentUser]);
+  
   return (
     <div className='bg-slate-200'>
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3 '>
