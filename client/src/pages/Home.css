@@ -30,7 +30,7 @@
 .glitch::before, .glitch::after {
   content: attr(data-text);
   position: absolute;
-  left: 0;
+  
 }
 .glitch::before {
   animation: glitchTop 1s infinite linear alternate-reverse;
