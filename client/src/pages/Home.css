@@ -10,7 +10,7 @@
 }
 
 .background-image {
-  background-image: url('/path/to/your/image.jpg'); /* 🔄 Replace with your actual image path */
+  background-image: url('client/src/pages/openart-image_dif-xaT1_1745150694940_raw.jpg');
   background-size: cover;
   background-position: center;
   width: 100%;
