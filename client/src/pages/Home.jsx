@@ -4,21 +4,22 @@ import './Home.css';
 function Home() {
   return (
     <div className="home-container">
-      <video autoPlay muted loop className="background-video">
-        <source src="https://www.videvo.net/videvo_files/converted/2017_12/preview/171201_05_Space_4k_008.mp498280.webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="background-image" />
 
       <div className="overlay-content">
-        <h1 className="glitch" data-text="NEO-EARTH INITIATIVE">NEO-EARTH INITIATIVE</h1>
-        <p className="subheading">Building a Green, AI-Driven Tomorrow 🌍🤖</p>
-        <div className="buttons">
-          <button className="btn primary">Join the Initiative</button>
-          <button className="btn secondary">Learn More</button>
-        </div>
+        <h1 className="glitch" data-text="NEO-EARTH INITIATIVE">NEO-EARTH</h1>
+        <p className="storyline">
+          The world we knew is gone.<br />
+          Burnt skies. Flooded cities. Silence where nature once sang.<br />
+          Above us, millions of tons of space debris drift—a graveyard of our ambition.<br />
+          We live in the shadow of a planet we failed to protect.<br />
+          This is not the beginning... it's what's left of the end.
+        </p>
       </div>
     </div>
   );
 }
 
 export default Home;
+
+
