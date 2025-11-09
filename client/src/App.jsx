@@ -16,12 +16,12 @@ function App() {
       <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/comms" element={<Comms />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/comms" element={<Comms />} />
           </Route>
         </Routes>
       </BrowserRouter>
