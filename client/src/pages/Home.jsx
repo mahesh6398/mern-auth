@@ -8,20 +8,12 @@ function Home() {
       {/* Background and Overlay remain the same */}
       <div className="background-image" />
       
-      {/* === 1. Navigation Bar (Top) === */}
-      <nav className="navbar">
-        <div className="logo">NEO-EARTH HQ</div>
-        <div className="nav-links">
-          <a href="/missions">Missions</a>
-          <a href="/data-logs">Logs</a>
-          <a href="/pricing">Schematics</a>
-          <a href="/login" className="nav-cta-btn">Access Console</a>
-        </div>
-      </nav>
+      {/* --- IMPORTANT CHANGE: Removed the custom <nav> component --- */}
 
+      {/* The main content now starts here */}
       <div className="overlay-content">
         
-        {/* === 2. Hero Headline and Storyline === */}
+        {/* === Hero Headline and Storyline === */}
         <h1 className="glitch" data-text="NEO-EARTH">NEO-EARTH</h1>
         
         <p className="storyline">
@@ -30,17 +22,18 @@ function Home() {
           We live in the shadow of a planet we failed to protect.
         </p>
 
-        {/* === 3. Primary CTAs (Call to Action) === */}
+        {/* === Primary CTAs (Call to Action) === */}
         <div className="hero-ctas">
+          {/* Note: Use Link from react-router-dom if you didn't import 'a' tags */}
           <a href="/signup" className="cta-primary">
             Secure Your Sector Access
-          </a>
+          </a> 
           <p className="cta-small-print">
             Powered by MERN: Real-time data from surviving communication nodes.
           </p>
         </div>
 
-        {/* === 4. Feature Showcase (Below the Fold Teaser) === */}
+        {/* === Feature Showcase (Below the Fold Teaser) === */}
         <div className="feature-teaser">
           <div className="teaser-card">
             <h3>[01] Data Logs</h3>
