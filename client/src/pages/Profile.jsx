@@ -9,6 +9,7 @@ import {
 import { app } from "../firebase";
 import { useDispatch } from "react-redux";
 import {signOut, deleteUserFailure, deleteUserStart, deleteUserSuccess, updateUserFailure,updateUserStart,updateUserSuccess } from "../redux/user/userSlice";
+import '../Home.css'; // Ensure custom styles are imported
 
 function Profile() {
   const { currentUser ,loading, error} = useSelector((state) => state.user);
@@ -20,6 +21,7 @@ function Profile() {
   const [updateSuccess,setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
 
+  // ... (All functions remain UNCHANGED) ...
   useEffect(() => {
     if (image) {
       handleFileUpload(image);
@@ -102,69 +104,97 @@ function Profile() {
       console.log(error);
     }
   }
+  // ... (All functions remain UNCHANGED) ...
   
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          type="file"
-          ref={fileRef}
-          hidden
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
-        <img
-          onClick={() => fileRef.current.click()}
-          src={formData.profilePicture || currentUser.profilePicture}
-          alt="profiel"
-          className="h-24 w-24 self-center cursor-pointer rounded-full object-cover mt-2"
-        />
-        <p className="text-sm self-center">
-          {imageError ? (
-            <span className="text-red-700">Erro Uploading Image (file size must be less than 2 MB)</span>
-          ) : imagePercentage > 0 && imagePercentage < 100 ? (
-            <span className="text-slate-700">{`uploading: ${imagePercentage}%`}</span>
-          ) : imagePercentage === 100 ? (
-            <span className="text-green-700">Image Uplaoded Successfully</span>
-          ) : (
-            ""
-          )}
-        </p>
+    // Apply dark body and central terminal box styling
+    <div className="content-body-dark flex justify-center py-12">
+        <div className="max-w-lg w-full p-8 auth-terminal-box">
+            
+            <h1 className="text-3xl font-bold text-center mb-7" style={{ color: '#ff0077', textShadow: '0 0 5px #ff0077' }}>
+                SECTOR ACCESS TERMINAL
+            </h1>
+            
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                <input
+                    type="file"
+                    ref={fileRef}
+                    hidden
+                    accept="image/*"
+                    onChange={(e) => setImage(e.target.files[0])}
+                />
+                
+                {/* Profile Image (Clickable to change) */}
+                <img
+                    onClick={() => fileRef.current.click()}
+                    src={formData.profilePicture || currentUser.profilePicture}
+                    alt="profile"
+                    // Use custom class for neon border on image
+                    className="h-24 w-24 self-center cursor-pointer object-cover mt-2 profile-image-neon" 
+                />
+                
+                {/* Image Upload Status Message */}
+                <p className="text-sm self-center" style={{ fontFamily: 'Share Tech Mono' }}>
+                    {imageError ? (
+                        <span style={{ color: '#ff0077' }}>ERROR: File integrity compromised (Max 2MB)</span>
+                    ) : imagePercentage > 0 && imagePercentage < 100 ? (
+                        <span style={{ color: '#00ff41' }}>{`TRANSMITTING: ${imagePercentage}%`}</span>
+                    ) : imagePercentage === 100 ? (
+                        <span style={{ color: '#ff0077' }}>Identity confirmed.</span>
+                    ) : (
+                        ""
+                    )}
+                </p>
 
-        <input
-          type="text"
-          defaultValue={currentUser.name}
-          id="name"
-          className="bg-slate-100 rounded-lg p-3"
-          placeholder="username"
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          defaultValue={currentUser.email}
-          id="email"
-          className="bg-slate-100 rounded-lg p-3"
-          placeholder="Email"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          id="password"
-          className="bg-slate-100 rounded-lg p-3"
-          placeholder="password"
-          onChange={handleChange}
-        />
-        <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-          {loading ? 'loading ...' : 'Update'}
-        </button>
-      </form>
-      <div className="flex justify-between mt-5">
-        <span className="text-red-700 cursor-pointer" onClick={handleDeleteAccount}>Delete Account</span>
-        <span className="text-red-700 cursor-pointer" onClick={handleSignOut}>Sign Out</span>
-      </div>
-      <p className="text-red-700 mt-5"> {error && "Something went wrong"}</p>
-      <p className="text-green-700 mt-5"> {updateSuccess && "User Updated Successfully!"}</p>
+                {/* Input Fields */}
+                <input
+                    type="text"
+                    defaultValue={currentUser.name}
+                    id="name"
+                    className="form-input-neon" // Custom class for neon input style
+                    placeholder="Sector ID (Username)"
+                    onChange={handleChange}
+                />
+                <input
+                    type="email"
+                    defaultValue={currentUser.email}
+                    id="email"
+                    className="form-input-neon"
+                    placeholder="Encrypted Channel Email"
+                    onChange={handleChange}
+                />
+                <input
+                    type="password"
+                    id="password"
+                    className="form-input-neon"
+                    placeholder="New Authorization Key (Password)"
+                    onChange={handleChange}
+                />
+                
+                {/* Update Button */}
+                <button disabled={loading} className="auth-button-primary">
+                    {loading ? 'INITIATING UPDATE...' : 'UPDATE CREDENTIALS'}
+                </button>
+            </form>
+            
+            {/* Action Links */}
+            <div className="flex justify-between mt-5" style={{ fontFamily: 'Share Tech Mono' }}>
+                <span className="auth-link-neon" style={{ color: '#ff0077' }} onClick={handleDeleteAccount}>
+                    [TERMINATE ACCESS]
+                </span>
+                <span className="auth-link-neon" onClick={handleSignOut}>
+                    [SIGN OUT]
+                </span>
+            </div>
+            
+            {/* Status Messages */}
+            <p className="mt-5 text-center" style={{ color: '#ff0077', fontFamily: 'Share Tech Mono' }}> 
+                {error && "Error: Update protocol failed."}
+            </p>
+            <p className="text-center" style={{ color: '#00ff41', fontFamily: 'Share Tech Mono' }}> 
+                {updateSuccess && "STATUS: Credentials updated successfully!"}
+            </p>
+        </div>
     </div>
   );
 }
