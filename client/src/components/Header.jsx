@@ -1,32 +1,49 @@
-import React, {useEffect} from 'react'
-import {Link} from 'react-router-dom';
-import {useSelector} from 'react-redux'
-function Header() {
-  const {currentUser} = useSelector(state => state.user) 
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import './Header.css';
 
-   useEffect(() => {
+function Header() {
+  const { currentUser } = useSelector(state => state.user);
+
+  useEffect(() => {
     if (currentUser?.email) {
       window.userEmail = currentUser.email;
     }
   }, [currentUser]);
-  
+
   return (
-    <div className='bg-slate-200'>
-      <div className='flex justify-between items-center max-w-6xl mx-auto p-3 '>
-        <h1 className='font-bold'><Link to={'/'}>MY APP</Link></h1>
-        <ul className='flex gap-4'>
-           <Link to={'/'}><li>Home</li></Link>
-             <Link to={'/about'}><li>About</li></Link>
-           <Link to = {'/profile'}>
-            {currentUser ? 
-            (<img src={currentUser.profilePicture} alt="profile" className='h-8 w-8 rounded-full object-cover'/>):(<li>SignIn</li>)
+    <div className='app-header'> 
+      <div className='header-content-container'>
+        
+        {/* Logo/App Name */}
+        <h1 className='nav-logo'>
+          <Link to={'/'}>NEO-EARTH HQ</Link>
+        </h1>
+        
+        {/* Navigation Links - Thematic Names */}
+        <ul className='nav-links-list'>
+          {/* Replaced 'Home' with 'ARCHIVE' (Your central hub/data repository) */}
+          <Link to={'/'}><li className='nav-item'>Archive</li></Link> 
+          
+          {/* Replaced 'About' with 'MANIFEST' (Details about the system/mission) */}
+          <Link to={'/about'}><li className='nav-item'>Manifest</li></Link> 
+          
+          {/* Added a new thematic link for user interaction */}
+          <Link to={'/comms'}><li className='nav-item'>Comms Log</li></Link> 
+          
+          {/* Profile/Sign In Link */}
+          <Link to={'/profile'} className='profile-link'>
+            {currentUser ?
+              (<img src={currentUser.profilePicture} alt="profile" className='profile-image' />)
+              :
+              (<li className='nav-item nav-signin-btn'>Access Console</li>)
             }
-            </Link>
+          </Link>
         </ul>
       </div>
     </div>
   );
 }
 
-export default Header
-
+export default Header;
