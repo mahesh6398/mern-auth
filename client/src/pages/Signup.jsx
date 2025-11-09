@@ -1,7 +1,7 @@
 import { Link,useNavigate } from "react-router-dom";
 import { useState,useRef } from "react";
 import OAuth from "../components/OAuth";
-import '../Home.css'; // Ensure you import a file containing .content-body-dark and .form-input-neon
+import './Home.css'; // Ensure you import a file containing .content-body-dark and .form-input-neon
 
 function Signup() {
   const [error, setError] = useState(false);
