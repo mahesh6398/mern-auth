@@ -1,19 +1,33 @@
 import React from 'react';
 import './Home.css';
-// Assuming you have routing set up (e.g., using React Router)
 
 function Home() {
   return (
     <div className="home-container">
-      {/* Background and Overlay remain the same */}
-      <div className="background-image" />
+      {/* -----------------------------------------------------
+         NEW: These divs will render your CSS animations
+      -------------------------------------------------------- */}
+      <div className="stars"></div>
+      <div className="stars"></div> {/* A second layer for depth */}
       
-      {/* --- IMPORTANT CHANGE: Removed the custom <nav> component --- */}
+      {/* Multiple shooting stars */}
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
 
-      {/* The main content now starts here */}
+      {/* Multiple meteors */}
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      
+      {/* REMOVED: Your original background-image div is no longer needed */}
+      {/* <div className="background-image" /> */} 
+      
       <div className="overlay-content">
         
-        {/* === Hero Headline and Storyline === */}
         <h1 className="glitch" data-text="NEO-EARTH">NEO-EARTH</h1>
         
         <p className="storyline">
@@ -22,9 +36,7 @@ function Home() {
           We live in the shadow of a planet we failed to protect.
         </p>
 
-        {/* === Primary CTAs (Call to Action) === */}
         <div className="hero-ctas">
-          {/* Note: Use Link from react-router-dom if you didn't import 'a' tags */}
           <a href="/signup" className="cta-primary">
             Secure Your Sector Access
           </a> 
@@ -33,7 +45,6 @@ function Home() {
           </p>
         </div>
 
-        {/* === Feature Showcase (Below the Fold Teaser) === */}
         <div className="feature-teaser">
           <div className="teaser-card">
             <h3>[01] Data Logs</h3>
