@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Home.css'; // Import Home.css to access the .page-grid-overlay class
+import './Home.css'; // Import Home.css to access the .page-grid-overlay class
 
 function About() {
   return (
