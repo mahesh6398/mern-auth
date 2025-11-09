@@ -344,3 +344,16 @@ body {
 .auth-link-neon:hover {
     text-shadow: 0 0 5px #00ff41;
 }
+
+/* --- PROFILE PAGE SPECIFIC STYLES --- */
+
+.profile-image-neon {
+    border-radius: 50%;
+    border: 4px solid #ff0077; /* Neon Pink Border */
+    box-shadow: 0 0 10px #ff0077;
+    transition: box-shadow 0.3s;
+}
+
+.profile-image-neon:hover {
+    box-shadow: 0 0 20px #00ff41; /* Green glow on hover/click */
+}
