@@ -2,39 +2,132 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
 /* --- Global & Container --- */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll from star animations */
+    background: #0d0d0d; /* Base dark background */
+}
+
 .home-container {
     position: relative;
     width: 100%;
-    /* Use min-height to ensure content fills the screen below the global header */
-    min-height: calc(100vh - 64px); 
+    min-height: calc(100vh - 64px); /* Account for the global header */
     overflow-y: auto; 
     font-family: 'Orbitron', sans-serif;
     color: #00ff41; /* Neon Green Text */
-    background: #0d0d0d;
+    background: transparent; /* Ensure container background is transparent to see stars */
+    z-index: 1; /* Keep content above stars */
 }
 
-.background-image {
-    background-image: url('./openart-image_dif-xaT1_1745150694940_raw.jpg');
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    position: absolute; 
+/* -------------------------------------------------------------------
+   NEW: Animated Cosmic Background - This replaces your .background-image
+----------------------------------------------------------------------*/
+
+/* Static Stars (using multiple box-shadows) */
+.stars {
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: -2;
-    opacity: 0.2; /* Dims the background to emphasize text */
-    filter: brightness(0.7) blur(1px);
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -3; /* Below background-image if it still existed */
+}
+
+.stars:nth-child(1) {
+    box-shadow: 
+        100px 100px #fff, 200px 300px #fff, 300px 200px #fff, 400px 100px #fff, 500px 350px #fff,
+        600px 150px #fff, 700px 400px #fff, 800px 250px #fff, 900px 50px #fff, 1000px 300px #fff,
+        /* Add many more for a dense field */
+        -50px 200px #fff, -250px 50px #fff, -400px 400px #fff, 1100px 100px #fff, 1200px 300px #fff,
+        1300px 200px #fff, 1400px 100px #fff, 1500px 350px #fff, 1600px 150px #fff, 1700px 400px #fff,
+        1800px 250px #fff, 1900px 50px #fff, 2000px 300px #fff;
+    animation: zoom 50s infinite alternate; /* Subtle zoom for parallax */
+}
+
+.stars:nth-child(2) {
+    box-shadow: 
+        50px 500px #fff, 150px 100px #fff, 250px 400px #fff, 350px 200px #fff, 450px 600px #fff,
+        550px 300px #fff, 650px 700px #fff, 750px 150px #fff, 850px 500px #fff, 950px 250px #fff;
+    animation: zoom 70s infinite alternate-reverse; /* Different speed for more depth */
+}
+
+/* Shooting Stars */
+.shooting-star {
+    position: absolute;
+    top: -100px; /* Start above screen */
+    right: 50%;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, #00ff41, transparent);
+    animation: shoot 5s linear infinite;
+    opacity: 0;
+    pointer-events: none; /* Make sure it doesn't block clicks */
+}
+
+.shooting-star:nth-child(1) { animation-delay: 1s; left: 10%; }
+.shooting-star:nth-child(2) { animation-delay: 3s; left: 40%; }
+.shooting-star:nth-child(3) { animation-delay: 5s; left: 70%; }
+.shooting-star:nth-child(4) { animation-delay: 7s; left: 25%; }
+.shooting-star:nth-child(5) { animation-delay: 9s; left: 85%; }
+
+
+@keyframes shoot {
+    0% { transform: translateY(0) translateX(0) rotate(-45deg); opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { transform: translateY(120vh) translateX(-120vw) rotate(-45deg); opacity: 0; }
+}
+
+/* Meteors (Subtle Revolving Effect) */
+.meteor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0077; /* Neon pink for meteors */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff0077, 0 0 20px #ff007788;
+    animation: orbit 30s linear infinite;
+    z-index: -2; /* Above stars, below content */
+    opacity: 0.6;
+}
+
+.meteor:nth-child(1) { top: 20%; left: 10%; animation-duration: 25s; }
+.meteor:nth-child(2) { top: 50%; left: 80%; animation-duration: 35s; transform: scale(0.8); }
+.meteor:nth-child(3) { top: 70%; left: 30%; animation-duration: 28s; transform: scale(1.2); }
+.meteor:nth-child(4) { top: 40%; left: 5%; animation-duration: 32s; transform: scale(0.9); }
+
+
+@keyframes orbit {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    25%  { transform: translate(20vw, 10vh) scale(0.8); opacity: 0.4; }
+    50%  { transform: translate(40vw, 0) scale(0.6); opacity: 0.2; }
+    75%  { transform: translate(20vw, -10vh) scale(0.8); opacity: 0.4; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+}
+
+@keyframes zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+/* -------------------------------------------------------------------
+   END: NEW Animated Cosmic Background
+----------------------------------------------------------------------*/
+
+.background-image {
+    /* REMOVED: No longer needed as we are generating stars with CSS */
+    display: none; 
 }
 
 .overlay-content {
-    /* Adjusted top padding to start content below the global header */
     padding: 50px 5% 50px; 
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Ensures content is above all background elements */
 }
 
 /* --- Glitch Headline --- */
@@ -98,7 +191,7 @@
 .teaser-card {
     flex: 1;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6); /* Slightly transparent for background visibility */
     border: 1px solid #00ff4155; /* Neon Green Border */
     border-radius: 5px;
     text-align: left;
