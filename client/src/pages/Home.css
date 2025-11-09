@@ -1,6 +1,54 @@
 /* Import Cyberpunk-style fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
+/* =======================================================
+   NEW SCROLLBAR HIDING RULES
+   These rules must be placed in a file that controls the
+   CSS for the scrolling container (usually the <body> or 
+   the main content wrapper).
+   ======================================================= */
+
+/* 1. Standard approach (for modern browsers) */
+/* Targets the main scrolling element (usually the HTML/Body) */
+html {
+  scrollbar-width: none; /* For Firefox */
+}
+
+/* 2. Webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0px; /* Hides the vertical scrollbar */
+  height: 0px; /* Hides the horizontal scrollbar */
+}
+/* If you want to target specific elements, apply the rules to them: */
+.home-container, .content-body-dark {
+    scrollbar-width: none; /* For Firefox */
+}
+
+.home-container::-webkit-scrollbar, .content-body-dark::-webkit-scrollbar {
+    display: none; /* For Webkit */
+}
+
+/* =======================================================
+   REVERTING PREVIOUS OVERFLOW CHANGES
+   Ensure these elements now allow scrolling!
+   ======================================================= */
+
+/* Revert the changes made in the last step to allow scrolling */
+.home-container {
+    /* ... other styles ... */
+    overflow-y: auto !important; /* MUST be auto or scroll */
+}
+
+.content-body-dark {
+    /* ... other styles ... */
+    overflow-y: auto !important; /* MUST be auto or scroll */
+}
+
+/* Also ensure your global body tag allows scrolling */
+body {
+    /* ... other styles ... */
+    overflow-y: scroll !important; /* Ensure browser allows body scrolling */
+}
 /* --- Global & Container --- */
 body {
     margin: 0;
