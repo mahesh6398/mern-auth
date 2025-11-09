@@ -1,5 +1,4 @@
 import React from 'react';
-// Assuming the CSS for the dark background is available globally (e.g., via Header.css import)
 import '../Home.css'; // Import Home.css to access the .page-grid-overlay class
 
 function About() {
