@@ -1,0 +1,92 @@
+/* Import Cyberpunk-style fonts to match the home page */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+/* --- Header Container --- */
+.app-header {
+    background: #0d0d0d; /* Very Dark Background */
+    /* Neon border to separate it visually */
+    border-bottom: 1px solid #ff0077; 
+    padding: 0; 
+    position: sticky; /* Keeps the header visible at the top */
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+/* --- Logo Styling --- */
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    /* Use Neon Pink for the logo */
+    color: #ff0077; 
+    font-family: 'Orbitron', sans-serif;
+}
+
+.nav-logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Navigation Links --- */
+.nav-links-list {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links-list a {
+    text-decoration: none;
+    color: #00ff41; /* Neon Green for links */
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links-list a:hover {
+    color: white;
+    text-shadow: 0 0 5px #00ff41; /* Subtle glow on hover */
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+/* --- Profile/Sign In Button --- */
+.nav-signin-btn {
+    /* Style the Sign In button as a high-contrast CTA */
+    background-color: #ff0077;
+    color: #0d0d0d !important;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.nav-signin-btn:hover {
+    background-color: #ff4d94;
+}
+
+/* --- Profile Picture Styling --- */
+.profile-link {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00ff41; /* Neon border around profile image */
+}
