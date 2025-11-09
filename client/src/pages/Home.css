@@ -280,3 +280,67 @@ body {
 .prompt-input::placeholder {
     color: #555;
 }
+
+/* --- AUTHENTICATION SPECIFIC STYLES --- */
+
+.auth-terminal-box {
+    background: rgba(0, 0, 0, 0.7); /* Dark, slightly transparent box */
+    border: 1px solid #ff0077; /* Neon Pink Border */
+    box-shadow: 0 0 25px rgba(255, 0, 119, 0.4); /* Stronger pink glow */
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Neon Inputs */
+.form-input-neon {
+    background-color: rgba(0, 0, 0, 0.5); /* Very dark background */
+    border: 1px solid #00ff4155; /* Subtle green border */
+    color: #00ff41; /* Neon green text */
+    padding: 12px;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+}
+
+.form-input-neon:focus {
+    border-color: #00ff41; /* Bright green focus */
+    box-shadow: 0 0 8px #00ff4188;
+    outline: none;
+}
+
+/* Primary Button (Activate Session / Transmit Request) */
+.auth-button-primary {
+    background-color: #ff0077; /* Neon Pink */
+    color: #0d0d0d; /* Dark text */
+    padding: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, opacity 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
+
+.auth-button-primary:hover:not(:disabled) {
+    background-color: #ff4d94;
+    opacity: 1;
+}
+
+.auth-button-primary:disabled {
+    opacity: 0.6;
+}
+
+/* Links (Sign Up / Sign In text at the bottom) */
+.auth-link-neon {
+    color: #00ff41; /* Neon green link text */
+    text-decoration: none;
+    transition: text-shadow 0.3s;
+}
+
+.auth-link-neon:hover {
+    text-shadow: 0 0 5px #00ff41;
+}
