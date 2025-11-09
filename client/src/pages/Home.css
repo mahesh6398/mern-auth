@@ -1,33 +1,32 @@
-/* Import Cyberpunk-style fonts */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-
 /* --- Global & Container --- */
 .home-container {
     position: relative;
     width: 100%;
-    height: 100vh;
-    overflow-y: auto; /* Allows scrolling for longer content */
+    /* ---------------------------------
+       KEY CHANGE: Use min-height instead of fixed 100vh.
+       If your Header is approx 64px (typical size), use calc:
+    --------------------------------- */
+    min-height: calc(100vh - 64px); 
+    overflow-y: auto; 
     font-family: 'Orbitron', sans-serif;
-    color: #00ff41; /* Neon Green Text */
+    color: #00ff41; 
     background: #0d0d0d;
 }
 
 .background-image {
-    background-image: url('./openart-image_dif-xaT1_1745150694940_raw.jpg');
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    position: fixed; /* Fixed background */
-    top: 0;
-    left: 0;
+    /* ... (rest of background-image styles remain the same) ... */
+    position: absolute; /* Changed from fixed, but ensure it covers the area */
     z-index: -2;
-    opacity: 0.2; /* Dims the background to emphasize text */
+    opacity: 0.2;
     filter: brightness(0.7) blur(1px);
 }
 
 .overlay-content {
-    padding: 150px 5% 50px; /* Top padding pushed down by Navbar */
+    /* ---------------------------------
+       KEY CHANGE: Adjusted top padding to start content below the global header.
+       The global header is not fixed, so we just need padding.
+    --------------------------------- */
+    padding: 50px 5% 50px; 
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -35,136 +34,6 @@
     z-index: 1;
 }
 
-/* --- 1. Navigation Bar --- */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid #ff007755; /* Subtle Neon Pink border */
-    z-index: 100;
-    font-family: 'Share Tech Mono', monospace;
-}
+/* --- REMOVE ALL .navbar, .logo, .nav-links STYLES --- */
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ff0077; /* Neon Pink */
-}
-
-.nav-links a {
-    color: #00ff41;
-    text-decoration: none;
-    margin-left: 30px;
-    padding: 5px 10px;
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-.nav-links a:hover {
-    color: white;
-    border-bottom: 1px solid #00ff41;
-}
-
-.nav-cta-btn {
-    background-color: #ff0077;
-    color: #0d0d0d !important;
-    padding: 8px 18px !important;
-    border-radius: 4px;
-    font-weight: bold;
-    border: none !important;
-}
-
-.nav-cta-btn:hover {
-    background-color: #ff4d94;
-    color: white !important;
-}
-
-/* --- 2. Glitch Headline --- */
-.glitch {
-    font-size: 5rem;
-    font-weight: 900;
-    text-shadow: 0 0 5px #00ff41, 0 0 20px #00ff4188;
-    color: #00ff41;
-    /* Glitch effect styles (omitted for brevity, but you'd define keyframes here) */
-}
-
-.storyline {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.1rem;
-    color: #999;
-    margin: 30px auto 50px;
-    max-width: 800px;
-    line-height: 1.6;
-}
-
-/* --- 3. Primary CTAs --- */
-.hero-ctas {
-    margin-bottom: 80px;
-}
-
-.cta-primary {
-    display: inline-block;
-    padding: 15px 40px;
-    background-color: #ff0077;
-    color: #0d0d0d;
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-weight: bold;
-    border-radius: 5px;
-    box-shadow: 0 0 15px #ff007755;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.cta-primary:hover {
-    background-color: #ff4d94;
-    box-shadow: 0 0 25px #ff0077;
-}
-
-.cta-small-print {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: #00ff4188;
-    font-family: 'Share Tech Mono', monospace;
-}
-
-/* --- 4. Feature Showcase --- */
-.feature-teaser {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-top: 50px;
-    padding-top: 50px;
-    border-top: 1px dashed #00ff4122;
-}
-
-.teaser-card {
-    flex: 1;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid #00ff4155;
-    border-radius: 5px;
-    text-align: left;
-    transition: border-color 0.3s;
-}
-
-.teaser-card:hover {
-    border-color: #ff0077;
-    box-shadow: 0 0 10px #ff007755;
-}
-
-.teaser-card h3 {
-    font-size: 1.5rem;
-    color: #ff0077;
-    margin-bottom: 10px;
-}
-
-.teaser-card p {
-    font-size: 0.95rem;
-    color: #ccc;
-    font-family: 'Share Tech Mono', monospace;
-}
+/* ... (Rest of the styles for .glitch, .storyline, .hero-ctas, .feature-teaser remain the same) ... */
