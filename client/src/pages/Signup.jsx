@@ -1,6 +1,8 @@
 import { Link,useNavigate } from "react-router-dom";
 import { useState,useRef } from "react";
 import OAuth from "../components/OAuth";
+import '../Home.css'; // Ensure you import a file containing .content-body-dark and .form-input-neon
+
 function Signup() {
   const [error, setError] = useState(false);
   const [loading,setLoading] = useState(false);
@@ -10,6 +12,7 @@ function Signup() {
   const PasswordElement = useRef();
 
   const handleSubmit = async (e) => {
+    // ... (Functionality remains unchanged)
     e.preventDefault();
     const name = UsernameElement.current.value;
     const email = EmailElement.current.value;
@@ -45,45 +48,52 @@ function Signup() {
     }
   };
 
-  // console.log(formData);
-
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7">Signup</h1>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          className="bg-slate-100 p-3 rounded-lg"
-          ref={UsernameElement}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          className="bg-slate-100 p-3 rounded-lg"
-          ref={EmailElement}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          className="bg-slate-100 p-3 rounded-lg"
-          ref={PasswordElement}
-        />
-        <button disabled={loading} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-          {loading ? 'Loading...' : 'Sign Up'}
-        </button>
-        <OAuth/>
-      </form>
-      <div className="flex gap-2 mt-5">
-        <p>Have an Account?</p>
-        <Link to="/signin">
-          <span className="text-blue-500">Sign in</span>
-        </Link>
-      </div>
-      <p className="text-red-700 mt-5">{error && 'Error during signup'}</p>
+    // Apply dark background and center alignment
+    <div className="content-body-dark flex justify-center items-center py-12">
+        <div className="max-w-md w-full p-8 auth-terminal-box">
+            <h1 className="text-3xl text-center font-bold mb-8" style={{ color: '#00ff41', textShadow: '0 0 5px #00ff41' }}>
+                NEW KEY REQUEST
+            </h1>
+            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Designated Code Name (Username)"
+                    id="username"
+                    className="form-input-neon"
+                    ref={UsernameElement}
+                />
+                <input
+                    type="email"
+                    placeholder="Validated Recovery Email"
+                    id="email"
+                    className="form-input-neon"
+                    ref={EmailElement}
+                />
+                <input
+                    type="password"
+                    placeholder="New Authorization Key (Password)"
+                    id="password"
+                    className="form-input-neon"
+                    ref={PasswordElement}
+                />
+                <button disabled={loading} className="auth-button-primary">
+                    {loading ? 'Initiating...' : 'TRANSMIT REQUEST'}
+                </button>
+                <OAuth/>
+            </form>
+            
+            <div className="flex justify-center gap-2 mt-6 text-sm" style={{ color: '#ccc', fontFamily: 'Share Tech Mono' }}>
+                <p>Key Already Available?</p>
+                <Link to="/signin">
+                    <span className="auth-link-neon">Access Console</span>
+                </Link>
+            </div>
+            
+            <p className="mt-5 text-center" style={{ color: '#ff0077', fontFamily: 'Share Tech Mono' }}>
+                {error && 'ERROR: Request protocol failed.'}
+            </p>
+        </div>
     </div>
   );
 }
