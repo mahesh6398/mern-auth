@@ -5,27 +5,14 @@ function Home() {
   return (
     <div className="home-container">
       {/* -----------------------------------------------------
-         NEW: These divs will render your CSS animations
+         NEW: Digital Grid and Ambient Glows
       -------------------------------------------------------- */}
-      <div className="stars"></div>
-      <div className="stars"></div> {/* A second layer for depth */}
+      <div className="digital-grid"></div>
+      <div className="scanline-shimmer"></div>
+      <div className="ambient-glow-green"></div>
+      <div className="ambient-glow-pink"></div>
       
-      {/* Multiple shooting stars */}
-      <div className="shooting-star"></div>
-      <div className="shooting-star"></div>
-      <div className="shooting-star"></div>
-      <div className="shooting-star"></div>
-      <div className="shooting-star"></div>
-
-      {/* Multiple meteors */}
-      <div className="meteor"></div>
-      <div className="meteor"></div>
-      <div className="meteor"></div>
-      <div className="meteor"></div>
-      
-      {/* REMOVED: Your original background-image div is no longer needed */}
-      {/* <div className="background-image" /> */} 
-      
+      {/* --- CONTENT START --- */}
       <div className="overlay-content">
         
         <h1 className="glitch" data-text="NEO-EARTH">NEO-EARTH</h1>
