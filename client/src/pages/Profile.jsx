@@ -9,7 +9,7 @@ import {
 import { app } from "../firebase";
 import { useDispatch } from "react-redux";
 import {signOut, deleteUserFailure, deleteUserStart, deleteUserSuccess, updateUserFailure,updateUserStart,updateUserSuccess } from "../redux/user/userSlice";
-import '../Home.css'; // Ensure custom styles are imported
+import './Home.css'; // Ensure custom styles are imported
 
 function Profile() {
   const { currentUser ,loading, error} = useSelector((state) => state.user);
