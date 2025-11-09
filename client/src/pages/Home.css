@@ -5,8 +5,8 @@
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    background: #000; /* Absolute black base */
+    overflow-x: hidden; 
+    background: #0d0d0d; /* Base dark background */
 }
 
 .home-container {
@@ -16,95 +16,103 @@ body {
     overflow-y: auto; 
     font-family: 'Orbitron', sans-serif;
     color: #00ff41; 
-    background: transparent;
+    background: transparent; 
     z-index: 1; 
 }
 
-/* -------------------------------------------------------------------
-   NEW: Impressive Digital Grid & Scanline Shimmer
-----------------------------------------------------------------------*/
+/* --- Animated Cosmic Background Styles (Restored) --- */
 
-/* 1. Digital Grid Overlay */
-.digital-grid {
+.stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -3;
-    opacity: 0.1; /* Very subtle */
-    background-image: 
-        linear-gradient(to right, #00ff41 1px, transparent 1px),
-        linear-gradient(to bottom, #00ff41 1px, transparent 1px);
-    background-size: 50px 50px;
+    background: transparent;
+    z-index: -3; 
 }
 
-/* 2. Scanline Shimmer Effect (The impressive part) */
-.scanline-shimmer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        rgba(255, 255, 255, 0.05), /* Subtle White Shimmer */
-        rgba(0, 255, 65, 0.05),   /* Subtle Green Shimmer */
-        rgba(255, 0, 119, 0.05)   /* Subtle Pink Shimmer */
-    );
-    background-size: 100% 100px; /* Controls the height of the scanline strip */
-    animation: scan 8s linear infinite;
-    z-index: -2;
+/* Star field setup */
+.stars:nth-child(1) {
+    box-shadow: 
+        100px 100px #fff, 200px 300px #fff, 300px 200px #fff, 400px 100px #fff, 500px 350px #fff,
+        600px 150px #fff, 700px 400px #fff, 800px 250px #fff, 900px 50px #fff, 1000px 300px #fff,
+        -50px 200px #fff, -250px 50px #fff, -400px 400px #fff, 1100px 100px #fff, 1200px 300px #fff,
+        1300px 200px #fff, 1400px 100px #fff, 1500px 350px #fff, 1600px 150px #fff, 1700px 400px #fff,
+        1800px 250px #fff, 1900px 50px #fff, 2000px 300px #fff;
+    animation: zoom 50s infinite alternate;
+}
+
+.stars:nth-child(2) {
+    box-shadow: 
+        50px 500px #fff, 150px 100px #fff, 250px 400px #fff, 350px 200px #fff, 450px 600px #fff,
+        550px 300px #fff, 650px 700px #fff, 750px 150px #fff, 850px 500px #fff, 950px 250px #fff;
+    animation: zoom 70s infinite alternate-reverse;
+}
+
+/* Shooting stars (Neon Green) */
+.shooting-star {
+    position: absolute;
+    top: -100px; 
+    right: 50%;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, #00ff41, transparent);
+    animation: shoot 5s linear infinite;
+    opacity: 0;
     pointer-events: none;
 }
 
-/* 3. Ambient Neon Glows (For High Contrast) */
-.ambient-glow-green {
-    position: fixed;
-    top: 50%;
-    left: 10%;
-    width: 400px;
-    height: 400px;
-    background: #00ff41;
+.shooting-star:nth-child(1) { animation-delay: 1s; left: 10%; }
+.shooting-star:nth-child(2) { animation-delay: 3s; left: 40%; }
+.shooting-star:nth-child(3) { animation-delay: 5s; left: 70%; }
+.shooting-star:nth-child(4) { animation-delay: 7s; left: 25%; }
+.shooting-star:nth-child(5) { animation-delay: 9s; left: 85%; }
+
+/* Meteors (Neon Pink) */
+.meteor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0077;
     border-radius: 50%;
-    filter: blur(200px);
-    opacity: 0.08;
-    z-index: -4;
-    animation: pulseGlow 10s infinite alternate;
-}
-.ambient-glow-pink {
-    position: fixed;
-    bottom: 0;
-    right: 5%;
-    width: 500px;
-    height: 500px;
-    background: #ff0077;
-    border-radius: 50%;
-    filter: blur(250px);
-    opacity: 0.12;
-    z-index: -4;
-    animation: pulseGlow 12s infinite alternate-reverse;
+    box-shadow: 0 0 10px #ff0077, 0 0 20px #ff007788;
+    animation: orbit 30s linear infinite;
+    z-index: -2; 
+    opacity: 0.6;
 }
 
+.meteor:nth-child(1) { top: 20%; left: 10%; animation-duration: 25s; }
+.meteor:nth-child(2) { top: 50%; left: 80%; animation-duration: 35s; transform: scale(0.8); }
+.meteor:nth-child(3) { top: 70%; left: 30%; animation-duration: 28s; transform: scale(1.2); }
+.meteor:nth-child(4) { top: 40%; left: 5%; animation-duration: 32s; transform: scale(0.9); }
 
-/* Keyframes for the Shimmer */
-@keyframes scan {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 100vh; } /* Moves the scanline from top to bottom */
+/* Keyframes */
+@keyframes shoot {
+    0% { transform: translateY(0) translateX(0) rotate(-45deg); opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { transform: translateY(120vh) translateX(-120vw) rotate(-45deg); opacity: 0; }
 }
 
-/* Keyframes for the Ambient Glows */
-@keyframes pulseGlow {
-    0% { transform: scale(1); opacity: 0.1; }
-    50% { transform: scale(1.1); opacity: 0.15; }
-    100% { transform: scale(1); opacity: 0.1; }
+@keyframes orbit {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    25%  { transform: translate(20vw, 10vh) scale(0.8); opacity: 0.4; }
+    50%  { transform: translate(40vw, 0) scale(0.6); opacity: 0.2; }
+    75%  { transform: translate(20vw, -10vh) scale(0.8); opacity: 0.4; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
 }
 
-/* -------------------------------------------------------------------
-   End of NEW Background Styles
-----------------------------------------------------------------------*/
+@keyframes zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
 
-/* --- Existing Content Styles (Kept for consistency) --- */
+/* Original background image reference (hidden by CSS if not needed) */
 .background-image { display: none; } 
+
+
+/* --- Content & Feature Styles (Restored) --- */
 
 .overlay-content {
     padding: 50px 5% 50px; 
@@ -115,11 +123,83 @@ body {
     z-index: 1; 
 }
 
-/* Glitch, Storyline, CTA, and Card styles remain the same... */
-/* ... (Ensure all remaining styles from the last comprehensive file are present) ... */
-.glitch { /* ... */ }
-.storyline { /* ... */ }
-.hero-ctas { /* ... */ }
-.cta-primary { /* ... */ }
-.feature-teaser { /* ... */ }
-.teaser-card { /* ... */ }
+.glitch {
+    font-size: 5rem;
+    font-weight: 900;
+    text-shadow: 0 0 5px #00ff41, 0 0 20px #00ff4188;
+    color: #00ff41;
+}
+
+.storyline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem;
+    color: #999;
+    margin: 30px auto 50px;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.hero-ctas {
+    margin-bottom: 80px;
+}
+
+.cta-primary {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #ff0077;
+    color: #0d0d0d;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #ff007755;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.cta-primary:hover {
+    background-color: #ff4d94;
+    box-shadow: 0 0 25px #ff0077;
+}
+
+.cta-small-print {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #00ff4188;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.feature-teaser {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px dashed #00ff4122;
+}
+
+.teaser-card {
+    flex: 1;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00ff4155;
+    border-radius: 5px;
+    text-align: left;
+    transition: border-color 0.3s;
+}
+
+.teaser-card:hover {
+    border-color: #ff0077;
+    box-shadow: 0 0 10px #ff007755;
+}
+
+.teaser-card h3 {
+    font-size: 1.5rem;
+    color: #ff0077;
+    margin-bottom: 10px;
+}
+
+.teaser-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    font-family: 'Share Tech Mono', monospace;
+}
