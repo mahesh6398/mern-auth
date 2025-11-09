@@ -203,3 +203,80 @@ body {
     color: #ccc;
     font-family: 'Share Tech Mono', monospace;
 }
+
+/* --- COMM LOG SPECIFIC STYLES --- */
+
+.comms-terminal-container {
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black terminal background */
+    border: 1px solid #00ff4155; /* Subtle neon green border */
+    box-shadow: 0 0 20px #00ff411a;
+    padding: 30px;
+    height: 80vh; /* Fixed height for a console feel */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.terminal-header {
+    color: #00ff41;
+    text-shadow: 0 0 5px #00ff41;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #00ff4122;
+    padding-bottom: 10px;
+}
+
+.comms-log-area {
+    flex-grow: 1; /* Fills all available vertical space */
+    overflow-y: auto; /* Allows scrolling of log entries */
+    padding-right: 15px;
+    line-height: 1.5;
+}
+
+.log-entry {
+    margin: 5px 0;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.log-timestamp {
+    color: #ff0077; /* Neon pink for timestamps */
+    margin-right: 10px;
+}
+
+.warning-message {
+    color: #ffaa00; /* Amber for warnings */
+}
+
+.success-message {
+    color: #00ff41; /* Green for success/verification */
+}
+
+.dynamic-feed-placeholder {
+    color: #999;
+    padding: 20px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+.terminal-prompt {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.prompt-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff41; /* Text typed is neon green */
+    font-family: 'Share Tech Mono', monospace;
+    flex-grow: 1;
+    padding: 5px 10px;
+    font-size: 1rem;
+    caret-color: #ff0077; /* Neon pink cursor */
+}
+
+/* Hide default input placeholder text */
+.prompt-input::placeholder {
+    color: #555;
+}
