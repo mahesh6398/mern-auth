@@ -4,15 +4,25 @@ import './Home.css';
 function Home() {
   return (
     <div className="home-container">
-      {/* -----------------------------------------------------
-         NEW: Digital Grid and Ambient Glows
-      -------------------------------------------------------- */}
-      <div className="digital-grid"></div>
-      <div className="scanline-shimmer"></div>
-      <div className="ambient-glow-green"></div>
-      <div className="ambient-glow-pink"></div>
+      {/* --- Restored Cosmic Background Elements (Styled in CSS) --- */}
+      <div className="stars"></div>
+      <div className="stars"></div> 
       
-      {/* --- CONTENT START --- */}
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      
+      {/* This element will be hidden by CSS but keeps the original file reference */}
+      <div className="background-image" /> 
+      
+      {/* --- Page Content --- */}
       <div className="overlay-content">
         
         <h1 className="glitch" data-text="NEO-EARTH">NEO-EARTH</h1>
