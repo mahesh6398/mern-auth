@@ -192,8 +192,9 @@ function AIV() {
         const doc = iframeRefA.current.contentDocument;
         if (doc) {
             doc.body.style.backgroundColor = '#0d0d0d';
+            // FIX: Corrected fontFamily string literal
+            doc.body.style.fontFamily = 'Share Tech Mono, monospace'; 
             doc.body.style.color = '#00ff41';
-            doc.body.style.fontFamily = 'Share Tech Mono', monospace';
             doc.body.style.padding = '10px';
             // Inject translated content
             doc.body.innerHTML = `
@@ -220,8 +221,9 @@ function AIV() {
         const doc = iframeRefB.current.contentDocument;
         if (doc) {
             doc.body.style.backgroundColor = '#1a1a1a';
+            // FIX: Corrected fontFamily string literal
+            doc.body.style.fontFamily = 'Share Tech Mono, monospace'; 
             doc.body.style.color = '#ff0077';
-            doc.body.style.fontFamily = 'Share Tech Mono', monospace';
             doc.body.style.padding = '10px';
             // Inject translated content
             doc.body.innerHTML = `
