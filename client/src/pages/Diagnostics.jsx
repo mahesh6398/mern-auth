@@ -1,14 +1,14 @@
 // client/src/pages/Diagnostics.jsx
 
 import React, { useState } from 'react';
-import './Home.css'; // Uses styles defined in Home.css
+import './Home.css'; 
 
 function Diagnostics() {
   const [systemStatus, setSystemStatus] = useState('Nominal');
   const [overrideActive, setOverrideActive] = useState(false);
   const [channelSelect, setChannelSelect] = useState('Comms-Relay-A');
   const [dataInput, setDataInput] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for the Modal Popup
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const statusColor = systemStatus === 'Critical' ? '#ff0077' : systemStatus === 'Warning' ? '#ffaa00' : '#00ff41';
 
@@ -22,7 +22,6 @@ function Diagnostics() {
     console.log('System Check Initiated. Review Status Panels.');
   };
 
-  // NEW FUNCTION: Handles the critical state change for the EXECUTE button
   const handleEmergencyShutdown = () => {
       setSystemStatus('Critical');
       setOverrideActive(false);
@@ -43,7 +42,6 @@ function Diagnostics() {
       console.log('Transmission initiated. Status set to CRITICAL.');
   };
   
-  // Custom styled Button Component
   const NeonButton = ({ children, onClick, disabled = false, style = {} }) => (
     <button
       onClick={onClick}
@@ -67,13 +65,12 @@ function Diagnostics() {
 
             <div className='comms-terminal-container' style={{ height: 'auto', maxHeight: 'none', padding: '30px', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '30px' }}>
                 
-                {/* 1. CONTROL PANEL (Left Side: Forms, Dropdown, Toggles) */}
+                {/* 1. CONTROL PANEL (Left Side: Forms, Dropdown, Toggles) - UNCHANGED */}
                 <div className="control-panel" style={{ borderRight: '1px dashed #00ff4122', paddingRight: '30px' }}>
                     <h2 style={{ color: '#ff0077', marginBottom: '20px', fontFamily: 'Orbitron', borderBottom: '1px solid #ff007755', paddingBottom: '10px' }}>
                         I/O CONTROLS
                     </h2>
 
-                    {/* A. Form Inputs */}
                     <form className='flex flex-col gap-4 mb-8' onSubmit={(e) => e.preventDefault()}>
                         <label style={{ color: '#00ff41', fontFamily: 'Share Tech Mono' }}>
                             Target System ID:
@@ -95,7 +92,6 @@ function Diagnostics() {
                             onChange={(e) => setDataInput(e.target.value)}
                         />
                         
-                        {/* B. Dropdown (Select) */}
                         <label style={{ color: '#00ff41', fontFamily: 'Share Tech Mono', marginTop: '10px' }}>
                             Communication Channel:
                         </label>
@@ -111,13 +107,11 @@ function Diagnostics() {
                         </select>
                     </form>
 
-                    {/* C. Toggles & Buttons */}
                     <div className="flex flex-col gap-4 mb-4">
                         <NeonButton onClick={handleSystemCheck}>
                             INITIATE SYSTEM CHECK
                         </NeonButton>
                         
-                        {/* EXECUTE Button FIX: Now calls handleEmergencyShutdown */}
                         <div className='flex justify-between items-center' style={{ fontFamily: 'Share Tech Mono', color: '#ccc' }}>
                             <span>EMERGENCY SHUTDOWN PROTOCOL:</span>
                             <button 
@@ -131,7 +125,6 @@ function Diagnostics() {
                             </button>
                         </div>
 
-                        {/* Button that opens the modal */}
                         <NeonButton 
                             onClick={handleTransmitPayload} 
                             disabled={!dataInput} 
@@ -141,7 +134,6 @@ function Diagnostics() {
                         </NeonButton>
                     </div>
 
-                    {/* D. Manual Override Button */}
                     <NeonButton 
                         onClick={handleManualOverride}
                         style={{ marginTop: '30px', backgroundColor: overrideActive ? '#00ff41' : '#ff0077' }}
@@ -152,7 +144,7 @@ function Diagnostics() {
                 </div>
 
 
-                {/* 2. STATUS & OUTPUT PANEL (Right Side: Cards, Status, Iframe) */}
+                {/* 2. STATUS & OUTPUT PANEL (Right Side) */}
                 <div className="status-panel">
                     <h2 style={{ color: '#ff0077', marginBottom: '20px', fontFamily: 'Orbitron', borderBottom: '1px solid #ff007755', paddingBottom: '10px' }}>
                         SYSTEM LIVE FEED
@@ -169,7 +161,7 @@ function Diagnostics() {
                     </div>
 
                     {/* B. Simulated Output Panel (Iframe Embed Simulation) */}
-                    <div style={{ height: '300px', width: '100%', border: '1px solid #00ff41', overflow: 'hidden', backgroundColor: 'black' }}>
+                    <div style={{ height: '200px', width: '100%', border: '1px solid #00ff41', overflow: 'hidden', backgroundColor: 'black', marginBottom: '30px' }}>
                         <h3 style={{ color: '#00ff41', fontFamily: 'Share Tech Mono', padding: '10px', margin: 0, borderBottom: '1px solid #00ff4155' }}>
                             [ I/O CONSOLE OUTPUT ]
                         </h3>
@@ -185,13 +177,25 @@ function Diagnostics() {
                             <p style={{ color: '#ccc' }}>{'>'} Console waiting for manual command...</p>
                         </div>
                     </div>
+                    
+                    {/* C. NEW: Integrity Monitor */}
+                    <div className='flex justify-center items-center' style={{ height: '150px' }}>
+                        <div className='integrity-monitor' style={{ borderColor: statusColor, boxShadow: `0 0 15px ${statusColor}88` }}>
+                            <p className='integrity-label'>ASSET CORE</p>
+                            <p className='integrity-value' style={{ color: statusColor }}>
+                                {/* Display 0% if critical, 100% otherwise */}
+                                {systemStatus === 'Critical' ? '0%' : '100%'}
+                            </p>
+                            <p className='integrity-status'>INTEGRITY</p>
+                        </div>
+                    </div>
                 </div>
 
             </div> {/* End comms-terminal-container */}
 
         </div>
 
-        {/* --- MODAL POPUP: Confirmation Overlay --- */}
+        {/* --- MODAL POPUP: Confirmation Overlay - UNCHANGED --- */}
         {isModalOpen && (
             <div className="modal-overlay">
                 <div className="modal-content auth-terminal-box">
