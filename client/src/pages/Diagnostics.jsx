@@ -191,7 +191,7 @@ function Diagnostics() {
                             src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed" 
                             style={{ 
                                 width: '100%', 
-                                height: '200px', 
+                                height: '350px', 
                                 border: 'none', 
                                 filter: `grayscale(100%) hue-rotate(100deg) brightness(50%) contrast(200%)`, /* Green Grid Filter */
                                 cursor: 'grab'
