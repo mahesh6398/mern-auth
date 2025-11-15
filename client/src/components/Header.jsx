@@ -33,6 +33,8 @@ function Header() {
           <Link to={'/comms'}><li className='nav-item'>Comms Log</li></Link> 
 
           <Link to={'/diagnostics'}><li className='nav-item' style={{color: '#ff0077'}}>DIAGNOSTICS</li></Link>
+
+          <Link to={'/aiv'}><li className='nav-item' style={{color: '#00ff41', fontWeight: 'bold'}}>AIV.VALIDATE</li></Link>
           
           {/* Profile/Sign In Link */}
           <Link to={'/profile'} className='profile-link'>
