@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import Diagnostics from "./pages/Diagnostics";
+import AIV from "./pages/AIV";
 import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/comms" element={<Comms />} />
           <Route path="/diagnostics" element={<Diagnostics />} />
+          <Route path="/aiv" element={<AIV />} />
           </Route>
         </Routes>
       </BrowserRouter>
