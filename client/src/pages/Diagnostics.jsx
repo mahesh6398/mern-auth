@@ -22,15 +22,20 @@ function Diagnostics() {
     console.log('System Check Initiated. Review Status Panels.');
   };
 
+  // NEW FUNCTION: Handles the critical state change for the EXECUTE button
+  const handleEmergencyShutdown = () => {
+      setSystemStatus('Critical');
+      setOverrideActive(false);
+      console.log('EMERGENCY SHUTDOWN PROTOCOL TRIGGERED! System Status: CRITICAL');
+  };
+
   const handleTransmitPayload = () => {
-    // This is the action that triggers the modal
     if (dataInput) {
         setIsModalOpen(true);
     }
   };
 
   const confirmTransmission = () => {
-      // Logic for confirming transmission
       console.log(`Payload transmitted on channel: ${channelSelect}`);
       setSystemStatus('Critical'); 
       setDataInput('');
@@ -52,7 +57,6 @@ function Diagnostics() {
 
   return (
     <div className='content-body-dark'>
-        {/* Digital Grid Background */}
         <div className='page-grid-overlay'></div>
         
         <div className='px-4 py-12 max-w-7xl mx-auto' style={{ position: 'relative', zIndex: 1 }}>
@@ -61,7 +65,6 @@ function Diagnostics() {
                 :: SYS.DIAGNOSTICS / MANUAL OVERRIDE ::
             </h1>
 
-            {/* Main Diagnostics Terminal Container (Uses CSS Grid for two columns) */}
             <div className='comms-terminal-container' style={{ height: 'auto', maxHeight: 'none', padding: '30px', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '30px' }}>
                 
                 {/* 1. CONTROL PANEL (Left Side: Forms, Dropdown, Toggles) */}
@@ -84,7 +87,6 @@ function Diagnostics() {
                         <label style={{ color: '#00ff41', fontFamily: 'Share Tech Mono' }}>
                             Data Injection Payload (Hex):
                         </label>
-                        {/* Textarea Input Element */}
                         <textarea
                             placeholder="Enter raw payload data..."
                             className="form-input-neon"
@@ -111,16 +113,15 @@ function Diagnostics() {
 
                     {/* C. Toggles & Buttons */}
                     <div className="flex flex-col gap-4 mb-4">
-                        {/* Enabled Button */}
                         <NeonButton onClick={handleSystemCheck}>
                             INITIATE SYSTEM CHECK
                         </NeonButton>
                         
-                        {/* Toggle Switch Simulation / Secondary Button */}
+                        {/* EXECUTE Button FIX: Now calls handleEmergencyShutdown */}
                         <div className='flex justify-between items-center' style={{ fontFamily: 'Share Tech Mono', color: '#ccc' }}>
                             <span>EMERGENCY SHUTDOWN PROTOCOL:</span>
                             <button 
-                                onClick={() => console.log('EMERGENCY SHUTDOWN TRIGGERED!')}
+                                onClick={handleEmergencyShutdown} 
                                 style={{
                                     backgroundColor: '#990000', color: 'white', padding: '5px 15px', borderRadius: '4px',
                                     border: '1px solid #ff0077', boxShadow: '0 0 5px #ff0077'
@@ -130,7 +131,7 @@ function Diagnostics() {
                             </button>
                         </div>
 
-                        {/* Disabled Button (Controlled by dataInput state) */}
+                        {/* Button that opens the modal */}
                         <NeonButton 
                             onClick={handleTransmitPayload} 
                             disabled={!dataInput} 
@@ -178,6 +179,9 @@ function Diagnostics() {
                             {systemStatus === 'Warning' && (
                                 <p className="warning-message">{'>'} ALERT: Resource utilization spiking (78%). Review Depot Manifest.</p>
                             )}
+                            {systemStatus === 'Critical' && (
+                                <p style={{ color: '#ff0077' }}>{'>'} WARNING: EMERGENCY PROTOCOL ACTIVE. MANUAL INPUT REQUIRED.</p>
+                            )}
                             <p style={{ color: '#ccc' }}>{'>'} Console waiting for manual command...</p>
                         </div>
                     </div>
@@ -202,7 +206,6 @@ function Diagnostics() {
                     </p>
 
                     <div className='flex justify-between gap-4'>
-                        {/* Modal Buttons */}
                         <NeonButton onClick={() => setIsModalOpen(false)} style={{ backgroundColor: '#555', color: '#ccc' }}>
                             CANCEL (Abort)
                         </NeonButton>
