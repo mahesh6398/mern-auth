@@ -31,6 +31,8 @@ function Header() {
           
           {/* Added a new thematic link for user interaction */}
           <Link to={'/comms'}><li className='nav-item'>Comms Log</li></Link> 
+
+          <Link to={'/diagnostics'}><li className='nav-item' style={{color: '#ff0077'}}>DIAGNOSTICS</li></Link>
           
           {/* Profile/Sign In Link */}
           <Link to={'/profile'} className='profile-link'>
