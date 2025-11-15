@@ -444,48 +444,6 @@ body {
     background-size: 50px 50px;
 }
 
-/* --- NEW INTEGRITY MONITOR STYLES (For Diagnostics Page) --- */
 
-.integrity-monitor {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Orbitron', sans-serif;
-    animation: rotateBorder 8s linear infinite; /* Animation for subtle visual interest */
-    position: relative;
-    background: rgba(0, 0, 0, 0.4);
-}
 
-.integrity-label {
-    font-size: 0.7rem;
-    color: #ff0077;
-    margin-bottom: 5px;
-}
 
-.integrity-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-shadow: 0 0 10px currentColor;
-    line-height: 1;
-}
-
-.integrity-status {
-    font-size: 0.6rem;
-    color: #ccc;
-    margin-top: 5px;
-}
-
-/* Keyframe for subtle rotation */
-@keyframes rotateBorder {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
