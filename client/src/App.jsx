@@ -7,6 +7,7 @@ import Signin from "./pages/Signin";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
+import Diagnostics from "./pages/Diagnostics";
 import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/about" element={<About />} />
           <Route path="/comms" element={<Comms />} />
+          <Route path="/diagnostics" element={<Diagnostics />} />
           </Route>
         </Routes>
       </BrowserRouter>
