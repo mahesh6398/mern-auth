@@ -193,7 +193,7 @@ function AIV() {
         if (doc) {
             doc.body.style.backgroundColor = '#0d0d0d';
             doc.body.style.color = '#00ff41';
-            doc.body.style.fontFamily = 'Share Tech Mono, monospace';
+            doc.body.style.fontFamily = 'Share Tech Mono', monospace';
             doc.body.style.padding = '10px';
             // Inject translated content
             doc.body.innerHTML = `
@@ -221,7 +221,7 @@ function AIV() {
         if (doc) {
             doc.body.style.backgroundColor = '#1a1a1a';
             doc.body.style.color = '#ff0077';
-            doc.body.style.fontFamily = 'Share Tech Mono, monospace';
+            doc.body.style.fontFamily = 'Share Tech Mono', monospace';
             doc.body.style.padding = '10px';
             // Inject translated content
             doc.body.innerHTML = `
@@ -449,4 +449,31 @@ function AIV() {
 
         </div>
 
-        {/* --- MOD
+        {/* --- MODAL POPUP: Alert Confirmation --- */}
+        {isModalOpen && (
+            <div className="modal-overlay">
+                <div className="modal-content auth-terminal-box">
+                    <h2 style={{ color: '#ff0077', fontFamily: 'Orbitron', marginBottom: '15px' }}>
+                        {t.criticalAlertTitle}
+                    </h2>
+                    <p style={{ color: '#ccc', fontFamily: 'Share Tech Mono', marginBottom: '20px' }}>
+                        {t.criticalAlertMessage}
+                    </p>
+                    <div className='flex justify-center gap-4'>
+                        <button 
+                            onClick={() => setIsModalOpen(false)} 
+                            className="auth-button-primary" 
+                            style={{ backgroundColor: '#555', color: '#ccc' }}
+                        >
+                            {t.acknowledge}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        )}
+
+    </div>
+  );
+}
+
+export default AIV;
