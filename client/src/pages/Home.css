@@ -406,3 +406,40 @@ body {
 .profile-image-neon:hover {
     box-shadow: 0 0 20px #00ff41; /* Green glow on hover/click */
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Dark, high-opacity background blur */
+    z-index: 2000; /* Ensure it's above everything, including the header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    /* Reuses .auth-terminal-box styling */
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    text-align: center;
+    z-index: 2001; 
+}
+
+/* --- Reusable Digital Grid Effect (Needed for Diagnostics background) --- */
+.page-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%; 
+    z-index: -1;
+    opacity: 0.15;
+    background-image: 
+        linear-gradient(to right, #00ff41 1px, transparent 1px),
+        linear-gradient(to bottom, #00ff41 1px, transparent 1px);
+    background-size: 50px 50px;
+}
