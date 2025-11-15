@@ -1,7 +1,7 @@
 // client/src/pages/AIV.jsx
 
 import React, { useState, useEffect, useRef } from 'react';
-import '../Home.css'; // For shared styles like .form-input-neon, .auth-button-primary, .comms-terminal-container
+import './Home.css'; // For shared styles like .form-input-neon, .auth-button-primary, .comms-terminal-container
 
 // --- Shadow DOM Web Components ---
 
