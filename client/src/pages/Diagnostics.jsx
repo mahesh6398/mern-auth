@@ -65,7 +65,7 @@ function Diagnostics() {
 
             <div className='comms-terminal-container' style={{ height: 'auto', maxHeight: 'none', padding: '30px', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '30px' }}>
                 
-                {/* 1. CONTROL PANEL (Left Side: Forms, Dropdown, Toggles) - UNCHANGED */}
+                {/* 1. CONTROL PANEL (Left Side) - UNCHANGED */}
                 <div className="control-panel" style={{ borderRight: '1px dashed #00ff4122', paddingRight: '30px' }}>
                     <h2 style={{ color: '#ff0077', marginBottom: '20px', fontFamily: 'Orbitron', borderBottom: '1px solid #ff007755', paddingBottom: '10px' }}>
                         I/O CONTROLS
@@ -178,16 +178,26 @@ function Diagnostics() {
                         </div>
                     </div>
                     
-                    {/* C. NEW: Integrity Monitor */}
-                    <div className='flex justify-center items-center' style={{ height: '150px' }}>
-                        <div className='integrity-monitor' style={{ borderColor: statusColor, boxShadow: `0 0 15px ${statusColor}88` }}>
-                            <p className='integrity-label'>ASSET CORE</p>
-                            <p className='integrity-value' style={{ color: statusColor }}>
-                                {/* Display 0% if critical, 100% otherwise */}
-                                {systemStatus === 'Critical' ? '0%' : '100%'}
-                            </p>
-                            <p className='integrity-status'>INTEGRITY</p>
-                        </div>
+                    {/* C. NEW: Scrollable World Map Grid */}
+                    <div className='map-grid-container' style={{ border: `1px solid ${statusColor}`, boxShadow: `0 0 10px ${statusColor}88` }}>
+                        <h3 style={{ color: statusColor, fontFamily: 'Orbitron', fontSize: '0.9rem', padding: '5px 10px', margin: 0 }}>
+                            WORLD SECTOR GRID 
+                            <span style={{ float: 'right', color: '#ccc', fontSize: '0.7rem', fontWeight: 300 }}>
+                                STATUS: {systemStatus.toUpperCase()}
+                            </span>
+                        </h3>
+                        {/* Iframe for the scrollable map simulation */}
+                        <iframe 
+                            src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed" 
+                            style={{ 
+                                width: '100%', 
+                                height: '200px', 
+                                border: 'none', 
+                                filter: `grayscale(100%) hue-rotate(100deg) brightness(50%) contrast(200%)`, /* Green Grid Filter */
+                                cursor: 'grab'
+                            }} 
+                            title="World Sector Grid"
+                        />
                     </div>
                 </div>
 
