@@ -49,7 +49,7 @@ function Signin() {
 
   return (
     // Apply dark background and center alignment
-    <div className="content-body-dark flex justify-center items-center py-12">
+    <div className="content-body-dark flex justify-center items-center py-12" id="Signin">
         <div className="max-w-md w-full p-8 auth-terminal-box">
             <h1 className="text-3xl text-center font-bold mb-8" style={{ color: '#00ff41', textShadow: '0 0 5px #00ff41' }}>
                 ACCESS CONSOLE
