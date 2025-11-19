@@ -34,7 +34,7 @@ function Home() {
         </p>
 
         <div className="hero-ctas">
-          <a href="/" className="cta-primary">
+          <a href="" className="cta-primary">
             Secure Your Sector Access
           </a> 
           <p className="cta-small-print">
