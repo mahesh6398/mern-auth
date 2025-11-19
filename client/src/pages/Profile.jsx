@@ -108,7 +108,7 @@ function Profile() {
   
   return (
     // Apply dark body and central terminal box styling
-    <div className="content-body-dark flex justify-center py-12">
+    <div className="content-body-dark flex justify-center py-12" id="Profile">
         <div className="max-w-lg w-full p-8 auth-terminal-box">
             
             <h1 className="text-3xl font-bold text-center mb-7" style={{ color: '#ff0077', textShadow: '0 0 5px #ff0077' }}>
