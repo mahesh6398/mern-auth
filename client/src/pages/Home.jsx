@@ -3,7 +3,7 @@ import './Home.css';
 
 function Home() {
   return (
-    <div className="home-container">
+    <div className="home-container" id="Home">
       {/* --- Restored Cosmic Background Elements (Styled in CSS) --- */}
       <div className="stars"></div>
       <div className="stars"></div> 
