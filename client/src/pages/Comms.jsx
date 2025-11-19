@@ -5,7 +5,7 @@ import './Home.css';
 function Comms() {
   return (
     // Apply the dark background style to the main container
-    <div className='content-body-dark'>
+    <div className='content-body-dark' id="Comms">
         {/* Apply the digital grid overlay */}
         <div className='page-grid-overlay'></div>
         
