@@ -54,7 +54,7 @@ function Diagnostics() {
   );
 
   return (
-    <div className='content-body-dark'>
+    <div className='content-body-dark' id="Diagnostics">
         <div className='page-grid-overlay'></div>
         
         <div className='px-4 py-12 max-w-7xl mx-auto' style={{ position: 'relative', zIndex: 1 }}>
