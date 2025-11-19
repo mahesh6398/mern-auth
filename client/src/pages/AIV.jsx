@@ -252,7 +252,7 @@ function AIV() {
   }, [language]); // Re-run effect when language changes
 
   return (
-    <div className='content-body-dark'>
+    <div className='content-body-dark' id="AIV">
         <div className='page-grid-overlay'></div>
         
         <div className='px-4 py-12 max-w-7xl mx-auto' style={{ position: 'relative', zIndex: 1 }}>
