@@ -9,6 +9,7 @@ function Header() {
   useEffect(() => {
     if (currentUser?.email) {
       window.userEmail = currentUser.email;
+      localStorage.setItem('currentUserEmail', currentUser.email)
     }
   }, [currentUser]);
 
