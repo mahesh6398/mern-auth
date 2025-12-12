@@ -44,7 +44,10 @@ function Home() {
 
         <div className="feature-teaser">
           <div className="teaser-card">
-            <h3>[01] Data Logs</h3>
+            <div>
+            <span id="test">[01] Data Logs</span>
+            </div>
+            
             <p>Access encrypted mission reports and global resource manifests.</p>
           </div>
           <div className="teaser-card">
